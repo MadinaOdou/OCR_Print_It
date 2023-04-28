@@ -49,27 +49,66 @@ const slides = [
 //   console.log("test ok");
 // }
 
-console.log("bienvenue !");
-
 // let fleche_gauche = document.getElementById("fleche_gauche");
-const fleche_gauche = document.querySelector(".arrow_left");
+
+const arrowLeft = document.querySelector(".arrow_left");
+const arrowRight = document.querySelector(".arrow_right");
 const imageBanner = document.querySelector(".banner-img");
-const tagLine = document.querySelector("#tagLine");
+const tagLine = document.querySelector(".tagLine");
 
-console.log(tagLine.innerHTML);
+// let i = 3;
 
-let compteur = 1;
+// arrowLeft.addEventListener("click", previousBanner);
 
-fleche_gauche.addEventListener("click", messageConsole);
+// function previousBanner() {
+//   imageBanner.src = "./assets/images/slideshow/" + slides[i].image;
+//   tagLine.innerHTML = slides[i].tagLine;
+//   i = i - 1;
+//   if (i == -1) {
+//     i = 3;
+//   }
+//   console.log(i);
+// }
 
-function messageConsole() {
-  console.log("Valeur du compteur : " + compteur);
-  imageBanner.src = "./assets/images/slideshow/" + slides[compteur].image;
-  tagLine.innerHTML = slides[compteur].tagLine;
-  compteur = compteur + 1;
-  if (compteur == 4) {
-    console.log("retour à zéro");
-    compteur = 0;
+// const arrowRight = document.querySelector(".arrow_right");
+
+// let k = 1;
+
+// arrowRight.addEventListener("click", nextBanner);
+
+// function nextBanner() {
+//   imageBanner.src = "./assets/images/slideshow/" + slides[k].image;
+//   tagLine.innerHTML = slides[k].tagLine;
+//   k = k + 1;
+//   if (k == 4) {
+//     k = 0;
+//   }
+//   console.log(k);
+// }
+
+let i = 0;
+
+arrowLeft.addEventListener("click", previousBanner);
+function previousBanner() {
+  i = i - 1;
+  if (i < 0) {
+    i = 3;
   }
-  console.log("Valeur du compteur : " + compteur);
+  console.log(i);
+  displayBanner();
+}
+
+function displayBanner() {
+  imageBanner.src = "./assets/images/slideshow/" + slides[i].image;
+  tagLine.innerHTML = slides[i].tagLine;
+}
+
+arrowRight.addEventListener("click", nextBanner);
+function nextBanner() {
+  i = i + 1;
+  if (i >= 4) {
+    i = 0;
+  }
+  console.log(i);
+  displayBanner();
 }
