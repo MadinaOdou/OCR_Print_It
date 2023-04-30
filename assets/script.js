@@ -55,6 +55,7 @@ const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 const imageBanner = document.querySelector(".banner-img");
 const tagLine = document.querySelector(".tagLine");
+const changeClass = document.querySelectorAll(".dot");
 
 // let i = 3;
 
@@ -86,7 +87,8 @@ const tagLine = document.querySelector(".tagLine");
 //   console.log(k);
 // }
 
-let i = 0;
+let i = 0,
+  k = -1;
 
 arrowLeft.addEventListener("click", previousBanner);
 function previousBanner() {
@@ -94,8 +96,15 @@ function previousBanner() {
   if (i < 0) {
     i = 3;
   }
-  console.log(i);
+  k = i + 1;
+  if (k === 4) {
+    k = 0;
+  }
+  console.log("i : " + i);
+  console.log("k : " + k);
   displayBanner();
+  removeDot();
+  addDot();
 }
 
 function displayBanner() {
@@ -109,6 +118,21 @@ function nextBanner() {
   if (i >= 4) {
     i = 0;
   }
+  k = k + 1;
+  if (k >= 4) {
+    k = 0;
+  }
   console.log(i);
+  console.log(k);
   displayBanner();
+  removeDot();
+  addDot();
+}
+
+function removeDot() {
+  changeClass[k].classList.remove("dot_selected");
+}
+
+function addDot() {
+  changeClass[i].classList.add("dot_selected");
 }
